@@ -1,4 +1,5 @@
-test-repo
+Getting and Cleaning Data Course Project
 =========
 
-testing
+How the script run_analysis.R works :
+
