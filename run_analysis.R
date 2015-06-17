@@ -17,13 +17,6 @@
 #The codebook still has the specific description of the tidy data file contents (and you mention that it exists and it's role in the ReadMe)
 
 
-#mynames <- c("bob", "mary", "tom")
-#description <- my names
-#description <- gsub("o", " the letter o ", description)
-#description <- gsub("m", " the letter m ", description)
-#codestart <- paste(mynames, description)
-#write.table(codestart, "startofcodebook.md")
-
 
 #STEP 1 + 2 + 4
 #merge training data with subject + activity
