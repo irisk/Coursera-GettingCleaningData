@@ -90,6 +90,7 @@ fullData[ ,2] <- factor(fullData[ ,2], labels = actLabels)
 #STEP 5
 library(plyr)
 tidyData <- ddply(fullData, c("Subject", "Activity"), numcolwise(mean))
+write.table(tidyData, "tidyData.txt", row.names=FALSE) 
 
 #group_by
 #summarize
