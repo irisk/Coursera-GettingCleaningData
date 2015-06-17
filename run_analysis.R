@@ -24,29 +24,82 @@
 #codestart <- paste(mynames, description)
 #write.table(codestart, "startofcodebook.md")
 
+
+#STEP 1 + 2 + 4
 #merge training data with subject + activity
-train <- read.table("./UCIDataset/train/X_train.txt", header=FALSE)
-subjectTrain <- read.table("./UCIDataset/train/subject_train.txt", header=FALSE)
+train <- read.table("./UCI HAR Dataset/train/X_train.txt", header=FALSE)
+
+#Get labels for each column
+labelsTable <- read.table("./UCI HAR Dataset/features.txt", header=FALSE)
+labels <- as.character(labelsTable[["V2"]])
+#Strip "()" from labels
+labels <- gsub("()", "", labels, fixed=TRUE)
+colnames(train) <- labels
+#Select only the measurements about the mean and standard deviation for each measurement
+meanAndStandard <- grepl("mean-|mean$|std", labels)
+trainSubset <- train[meanAndStandard]
+
+#read the subject data and label the column
+subjectTrain <- read.table("./UCI HAR Dataset/train/subject_train.txt", header=FALSE)
 colnames(subjectTrain) <- "Subject"
-actTrain <- read.table("./UCIDataset/train/y_train.txt", header=FALSE)
+
+#read the activity data and label the column
+actTrain <- read.table("./UCI HAR Dataset/train/y_train.txt", header=FALSE)
 colnames(actTrain) <- "Activity"
-actTrain[ ,1] <- factor(actTrain[ ,1], labels = c("WALKING", "WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", "SITTING", "STANDING", "LAYING"))
 
-middleTrain <- cbind(subjectTrain, train)
-trainData <- cbind(actTrain, middleTrain)
+#cbind the three data frames together: subject + activity + testData
+intermediateStep <- cbind(actTrain, trainSubset)
+trainData <- cbind(subjectTrain, intermediateStep)
 
-#merge test data with subject + activity
-test <- read.table("./UCIDataset/test/X_test.txt", header=FALSE)
-subjectTest <- read.table("./UCIDataset/test/subject_test.txt", header=FALSE)
+
+#read test data
+test <- read.table("./UCI HAR Dataset/test/X_test.txt", header=FALSE)
+#apply the same labels as column names
+colnames(test) <- labels
+#Select only the measurements about the mean and standard deviation for each measurement
+testSubset <- test[meanAndStandard]
+
+#read the subject data and label the column
+subjectTest <- read.table("./UCI HAR Dataset/test/subject_test.txt", header=FALSE)
 colnames(subjectTest) <- "Subject"
 
-actTest <- read.table("./UCIDataset/test/y_test.txt", header=FALSE)
+#read the activity data and label the column
+actTest <- read.table("./UCI HAR Dataset/test/y_test.txt", header=FALSE)
 colnames(actTest) <- "Activity"
-actTest[ ,1] <- factor(actTest[ ,1], labels = c("WALKING", "WALKING_UPSTAIRS", "WALKING_DOWNSTAIRS", "SITTING", "STANDING", "LAYING"))
+
+#cbind the three data frames together: subject + activity  + testData
+intermediateStep2 <- cbind(actTest, testSubset)
+testData <- cbind(subjectTest, intermediateStep2)
+
+#rbind the trainData and testData, to create one big dataset
+fullData <- rbind(trainData, testData)
+#head(fullData[,1:3])
+#tail(fullData[,1:3])
 
 
-middleTest <- cbind(subjectTest, test)
-testData <- cbind(actTest, middleTest)
+
+
+#STEP 3
+#Turn the activity numbers into levels
+
+#Read the labels file and extract the second column with the actual labels
+actLabels <- read.table("./UCI HAR Dataset/activity_labels.txt", header=FALSE)
+actLabels <- as.character(actLabels[["V2"]])
+#Change the labels of the factor 
+fullData[ ,2] <- factor(fullData[ ,2], labels = actLabels)
+#head(fullData[,1:3])
+#tail(fullData[,1:3])
+
+
+#STEP 4
+
+
+#STEP 5
+library(plyr)
+tidyData <- ddply(fullData, c("Subject", "Activity"), numcolwise(mean))
+
+#group_by
+#summarize
 
 #reading in the table
 #data <- read.table(file_path, header = TRUE) #if they used some other way of saving the file than a default write.table, this step will be different
