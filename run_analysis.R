@@ -17,9 +17,15 @@
 #The codebook still has the specific description of the tidy data file contents (and you mention that it exists and it's role in the ReadMe)
 
 
+##########################
+#STEP 1 + 2 
+##########################
 
-#STEP 1 + 2 + 4
-#merge training data with subject + activity
+######## 
+# Read training data, label columns correctly, extract required columns, and merge together with subject + activity
+#######
+
+#Read training data
 train <- read.table("./UCI HAR Dataset/train/X_train.txt", header=FALSE)
 
 #Get labels for each column
@@ -40,10 +46,13 @@ colnames(subjectTrain) <- "Subject"
 actTrain <- read.table("./UCI HAR Dataset/train/y_train.txt", header=FALSE)
 colnames(actTrain) <- "Activity"
 
-#cbind the three data frames together: subject + activity + testData
+#cbind the three data frames together: subject + activity + trainData:  68 columns, 7352 rows
 intermediateStep <- cbind(actTrain, trainSubset)
 trainData <- cbind(subjectTrain, intermediateStep)
 
+######## 
+# Read in test data, label columns correctly, extract required columns, and merge together with subject + activity
+#######
 
 #read test data
 test <- read.table("./UCI HAR Dataset/test/X_test.txt", header=FALSE)
@@ -60,41 +69,43 @@ colnames(subjectTest) <- "Subject"
 actTest <- read.table("./UCI HAR Dataset/test/y_test.txt", header=FALSE)
 colnames(actTest) <- "Activity"
 
-#cbind the three data frames together: subject + activity  + testData
+#cbind the three data frames together: subject + activity  + testData : 68 columns, 2947 rows
 intermediateStep2 <- cbind(actTest, testSubset)
 testData <- cbind(subjectTest, intermediateStep2)
 
-#rbind the trainData and testData, to create one big dataset
+######
+# rbind the trainData and testData, to create one big dataset: 68 columns, 10299 rows
+######
 fullData <- rbind(trainData, testData)
-#head(fullData[,1:3])
-#tail(fullData[,1:3])
 
 
 
+##########################
+# STEP 3
+##########################
+#Turn the Activity variable from numbers into descriptive names
 
-#STEP 3
-#Turn the activity numbers into levels
-
-#Read the labels file and extract the second column with the actual labels
+#Read the activity labels file and extract the second column with the actual labels
 actLabels <- read.table("./UCI HAR Dataset/activity_labels.txt", header=FALSE)
 actLabels <- as.character(actLabels[["V2"]])
 #Change the labels of the factor 
 fullData[ ,2] <- factor(fullData[ ,2], labels = actLabels)
-#head(fullData[,1:3])
-#tail(fullData[,1:3])
 
 
-#STEP 4
+##########################
+# STEP 4
+##########################
 
 
-#STEP 5
+
+##########################
+# STEP 5
+##########################
+
+#Create the tidy data set, with the average of each variable for each activity and each subject.
 library(plyr)
 tidyData <- ddply(fullData, c("Subject", "Activity"), numcolwise(mean))
+#Write the result to a file
 write.table(tidyData, "tidyData.txt", row.names=FALSE) 
 
-#group_by
-#summarize
 
-#reading in the table
-#data <- read.table(file_path, header = TRUE) #if they used some other way of saving the file than a default write.table, this step will be different
-#View(data)
