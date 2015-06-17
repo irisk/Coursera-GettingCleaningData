@@ -1,10 +1,7 @@
-labelsTable <- read.table("./UCI HAR Dataset/features.txt", header=FALSE)
-labels <- as.character(labelsTable[["V2"]])
-#Strip "()" from labels
-labels <- gsub("()", "", labels, fixed=TRUE)
-#Select only the measurements about the mean and standard deviation for each measurement
-meanAndStandard <- grepl("mean-|mean$|std", labels)
+data <- read.table("./UCI HAR Dataset/tidyData.txt", header=FALSE)
 
+
+labels <- colnames(data)
 
 
 description <- gsub("o", " the letter o ", description)

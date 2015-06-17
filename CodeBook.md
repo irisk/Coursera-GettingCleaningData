@@ -54,6 +54,7 @@ fBodyGyroJerkMag
 The set of variables that were estimated from these signals, and that we used for this analysis, are: 
 
 mean(): Mean value
+
 std(): Standard deviation
 
  
@@ -65,16 +66,16 @@ std(): Standard deviation
 3. Add the data and the script run_analysis.R to the same folder
 4. Make this your working directory in Rstudio.
 5. Run script
-6. Now, you will have a tidy data set called tidyData, and this dataset has also been stored as a file tidyData.txt
+6. Now, you will have a tidy data set called tidyData in your workspace, and this dataset has also been stored as a file tidyData.txt
  
 ###Cleaning of the data
 To understand how the script works please check out [this readme document](https://github.com/irisk/Coursera-GettingCleaningData/blob/master/README.md)
  
 ##Description of the variables in the tidyData.txt file
-The data set gives for each combination of Subject and Activity, the mean of the observations for a give "variable"
+The data set gives for each combination of Subject and Activity, the mean of the observations for a given feature. The original data set contained 10299 observations for each feature. The tidy data set contains the mean for each group of observations, where the grouping is per Subject and Activity (180 groups).
 This results in 180 rows and 68 variables (columns)
 The first two columns indicate wich Subject and Activity, respectively, the row concerns.
-The other 66 columns contain the mean of the observations for 66 different variables.
+The other 66 columns contain the mean of the observations for the 66 different features.
 
  
 ###Variable 1 - Subject
@@ -86,24 +87,25 @@ This identifies which activity the subject performed. This can be one of 6 label
 
 ###Variable 3-68  The means of 66 different features from the dataset
 The orginal data on the features, the variables are normalized and bounded within [ -1, 1]
+The original data set contained 10299 observations for each feature. The tidy data set contains the mean for each group of observations, where the grouping is per Subject and Activity (180 groups).
 
-tBodyAcc-XYZ
-tGravityAcc-XYZ
-tBodyAccJerk-XYZ
-tBodyGyro-XYZ
-tBodyGyroJerk-XYZ
-tBodyAccMag
-tGravityAccMag
-tBodyAccJerkMag
-tBodyGyroMag
-tBodyGyroJerkMag
-fBodyAcc-XYZ
-fBodyAccJerk-XYZ
-fBodyGyro-XYZ
-fBodyAccMag
-fBodyAccJerkMag
-fBodyGyroMag
-fBodyGyroJerkMag
+-tBodyAcc-XYZ
+-tGravityAcc-XYZ
+-tBodyAccJerk-XYZ
+-tBodyGyro-XYZ
+-tBodyGyroJerk-XYZ
+-tBodyAccMag
+-tGravityAccMag
+-tBodyAccJerkMag
+-tBodyGyroMag
+-tBodyGyroJerkMag
+-fBodyAcc-XYZ
+-fBodyAccJerk-XYZ
+-fBodyGyro-XYZ
+-fBodyAccMag
+-fBodyAccJerkMag
+-fBodyGyroMag
+-fBodyGyroJerkMag
 
 
 

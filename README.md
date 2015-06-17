@@ -21,7 +21,7 @@ Now, we have two complete dataframes, trainData and testData, which are added to
 In this step the script changes the numeric activity values into descriptive names, using the file in the data that describes the values, activity_labels.txt
 
 #Step 4
-
+This step improves the labels for the columns of the data set, making them more descriptive and easy to read.
 
 #Step 5
 Using the ddply function, for each combination of Subject and Activity, we get the mean of each numeric column of the dataframe. This is precisely what the assignment asks for.
