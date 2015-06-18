@@ -1,11 +1,79 @@
-data <- read.table("./UCI HAR Dataset/tidyData.txt", header=FALSE)
-
-
+data <- read.table("tidyData.txt", header=TRUE)
 labels <- colnames(data)
+#organize as a matrix with 68 rows (long form), instead of wide vector
+labels <- matrix(labels,nrow = 68 ,ncol = 1)
 
+labelsExtracted <- as.data.frame(labels[3:68])
 
-description <- gsub("o", " the letter o ", description)
-description <- gsub("m", " the letter m ", description)
-codestart <- paste(mynames, description)
-write.table(codestart, "startofcodebook.md")
+descriptions <- c(
+  "Time domain signal, Body acceleration, X direction, mean value",
+  "Time domain signal, Body acceleration, Y direction, mean value ",
+  "Time domain signal, Body acceleration, Z direction, mean value",
+  "Time domain signal, Body acceleration, X direction, standard deviation",
+  "Time domain signal, Body acceleration, Y direction, standard deviation",
+  "Time domain signal, Body acceleration, Z direction, standard deviation",
+  "Time domain signal, Gravity acceleration, X direction, mean value",
+  "Time domain signal, Gravity acceleration, Y direction, mean value",
+  "Time domain signal, Gravity acceleration, Z direction, mean value",
+  "Time domain signal, Gravity acceleration, X direction, standard deviation",
+  "Time domain signal, Gravity acceleration, Y direction, standard deviation",
+  "Time domain signal, Gravity acceleration, Z direction, standard deviation",
+  "Time domain signal, Body acceleration jerk, X direction, mean value",
+  "Time domain signal, Body acceleration jerk, Y direction, mean value ",
+  "Time domain signal, Body acceleration jerk, Z direction, mean value",
+  "Time domain signal, Body acceleration jerk, X direction, standard deviation",
+  "Time domain signal, Body acceleration jerk, Y direction, standard deviation",
+  "Time domain signal, Body acceleration jerk, Z direction, standard deviation",
+  "Time domain signal, Body gyro, X direction, mean value",
+  "Time domain signal, Body gyro, Y direction, mean value ",
+  "Time domain signal, Body gyro, Z direction, mean value",
+  "Time domain signal, Body gyro, X direction, standard deviation",
+  "Time domain signal, Body gyro, Y direction, standard deviation",
+  "Time domain signal, Body gyro, Z direction, standard deviation",
+  "Time domain signal, Body gyro jerk, X direction, mean value",
+  "Time domain signal, Body gyro jerk, Y direction, mean value ",
+  "Time domain signal, Body gyro jerk, Z direction, mean value",
+  "Time domain signal, Body gyro jerk, X direction, standard deviation",
+  "Time domain signal, Body gyro jerk, Y direction, standard deviation",
+  "Time domain signal, Body gyro jerk, Z direction, standard deviation",
+  "Time domain signal, Body acceleration magnitude, mean value",
+  "Time domain signal, Body acceleration magnitude, standard deviation",
+  "Time domain signal, Gravity acceleration magnitude, mean value",
+  "Time domain signal, Gravity acceleration magnitude, standard deviation",
+  "Time domain signal, Body acceleration jerk magnitude, mean value",
+  "Time domain signal, Body acceleration jerk magnitude, standard deviation",
+  "Time domain signal, Body gyro magnitude, mean value",
+  "Time domain signal, Body gyro magnitude, standard deviation",
+  "Time domain signal, Body gyro jerk magnitude, mean value",
+  "Time domain signal, Body gyro jerk magnitude, standard deviation",
+  "Fast fourier transformed signal, Body acceleration, X direction, mean value",
+  "Fast fourier transformed signal, Body acceleration, Y direction, mean value ",
+  "Fast fourier transformed signal, Body acceleration, Z direction, mean value",
+  "Fast fourier transformed signal, Body acceleration, X direction, standard deviation",
+  "Fast fourier transformed signal, Body acceleration, Y direction, standard deviation",
+  "Fast fourier transformed signal, Body acceleration, Z direction, standard deviation",
+  "Fast fourier transformed signal, Body acceleration jerk, X direction, mean value",
+  "Fast fourier transformed signal, Body acceleration jerk, Y direction, mean value ",
+  "Fast fourier transformed signal, Body acceleration jerk, Z direction, mean value",
+  "Fast fourier transformed signal, Body acceleration jerk, X direction, standard deviation",
+  "Fast fourier transformed signal, Body acceleration jerk, Y direction, standard deviation",
+  "Fast fourier transformed signal, Body acceleration jerk, Z direction, standard deviation",
+  "Fast fourier transformed signal, Body gyro, X direction, mean value",
+  "Fast fourier transformed signal, Body gyro, Y direction, mean value ",
+  "Fast fourier transformed signal, Body gyro, Z direction, mean value",
+  "Fast fourier transformed signal, Body gyro, X direction, standard deviation",
+  "Fast fourier transformed signal, Body gyro, Y direction, standard deviation",
+  "Fast fourier transformed signal, Body gyro, Z direction, standard deviation",
+  "Fast fourier transformed signal, Body acceleration magnitude, mean value",
+  "Fast fourier transformed signal, Body acceleration magnitude, standard deviation",
+  "Fast fourier transformed signal, Body acceleration jerk magnitude, mean value",
+  "Fast fourier transformed signal, Body acceleration jerk magnitude, standard deviation",
+  "Fast fourier transformed signal, Body gyro magnitude, mean value",
+  "Fast fourier transformed signal, Body gyro magnitude, standard deviation",
+  "Fast fourier transformed signal, Body gyro jerk magnitude, mean value",
+  "Fast fourier transformed signal, Body gyro jerk magnitude, standard deviation"
+  )
+
+codestart <- paste("|", labelsExtracted[,1], "|", descriptions, "|", "normalized and bounded within [ -1, 1]", "|")
+#write.table(codestart, "startofcodebook2.md", row.names=FALSE)
 

@@ -31,7 +31,7 @@ The other 66 columns contain the mean of the observations for 66 different varia
 
 #Reading in the tidy data set
 If you want to read the tidy data set in again, you can use the following code
-  data <- read.table("tidyData.txt", header = TRUE) 
-  View(data)
+ ```data <- read.table("tidyData.txt", header = TRUE) 
+ ```  View(data)
 
 
