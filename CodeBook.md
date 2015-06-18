@@ -2,14 +2,7 @@ Getting and Cleaning Data Course Project
 CodeBook - Iris van de Kieft
 =========
 
-This describes the variables, the data, and any transformations or work that I performed to clean up the data
-The codebook describes the meaning of each column in the tidy data set.
-In case names follow some schema, describe how entries were constructed (for example time-body-gyroscope-z has 4 levels of descriptors. Describe these 4 levels)."
-
-Since it say labels the data set it is talking about the variable names (which at the moment are V1, V2, etc if you have be following the steps in there numbered order. Descriptive variable names means names based on the action the variable is recording, for example the Jerk of the body on the z axis of the phone. In general, the more descriptive is going to be the better. once again make it easy for your markers by noting why they are descriptive names (what they mean goes in the code book).
-
-
-
+This codebook describes the variables, the data, and any transformations or work that I performed to clean up the data.
  
 ## Project Description
 Human Activity Recognition Using Smartphones Data Set 
@@ -54,7 +47,6 @@ fBodyGyroJerkMag
 The set of variables that were estimated from these signals, and that we used for this analysis, are: 
 
 mean(): Mean value
-
 std(): Standard deviation
 
  
@@ -85,15 +77,15 @@ This is an integer which identifies the subject who performed the activity for e
 This identifies which activity the subject performed. This can be one of 6 labels: WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS,  SITTING, STANDING,  LAYING
 
 
-###Variable 3-68  The means of 66 different features from the dataset
-The orginal data on the features, the variables are normalized and bounded within [ -1, 1]
+###Variable 3:68 -  The means of 66 different features from the dataset
+In the orginal data on the features, the variables are normalized and bounded within [ -1, 1]
 The original data set contained 10299 observations for each feature. The tidy data set contains the mean for each group of observations, where the grouping is per Subject and Activity (180 groups).
 
 Each feature label/name consists of  3 or 4 parts: p1.p2.p3.p4  (p4 is optional)
- - p1: time or fastfourier
- - p2
- - p3: mean or std
- - p4: if applicable, the axis of the measurment X, Y or Z
+ - p1: time signal or fast fourier transformed signal
+ - p2: signal type
+ - p3: mean or std 
+ - p4: if applicable, the axis of the measurement X, Y or Z
  
  | Feature label      | Description           | Values  |
   | :------------ | :------------ | :-------- |
@@ -115,28 +107,28 @@ Each feature label/name consists of  3 or 4 parts: p1.p2.p3.p4  (p4 is optional)
 | time.BodyAccelerationJerk.std.X | Time domain signal, Body acceleration jerk, X direction, standard deviation | normalized and bounded within [ -1, 1] |
 | time.BodyAccelerationJerk.std.Y | Time domain signal, Body acceleration jerk, Y direction, standard deviation | normalized and bounded within [ -1, 1] |
 | time.BodyAccelerationJerk.std.Z | Time domain signal, Body acceleration jerk, Z direction, standard deviation | normalized and bounded within [ -1, 1] |
-| time.BodyGyro.mean.X | Time domain signal, Body gyro, X direction, mean value | normalized and bounded within [ -1, 1] |
-| time.BodyGyro.mean.Y | Time domain signal, Body gyro, Y direction, mean value  | normalized and bounded within [ -1, 1] |
-| time.BodyGyro.mean.Z | Time domain signal, Body gyro, Z direction, mean value | normalized and bounded within [ -1, 1] |
-| time.BodyGyro.std.X | Time domain signal, Body gyro, X direction, standard deviation | normalized and bounded within [ -1, 1] |
-| time.BodyGyro.std.Y | Time domain signal, Body gyro, Y direction, standard deviation | normalized and bounded within [ -1, 1] |
-| time.BodyGyro.std.Z | Time domain signal, Body gyro, Z direction, standard deviation | normalized and bounded within [ -1, 1] |
-| time.BodyGyroJerk.mean.X | Time domain signal, Body gyro jerk, X direction, mean value | normalized and bounded within [ -1, 1] |
-| time.BodyGyroJerk.mean.Y | Time domain signal, Body gyro jerk, Y direction, mean value  | normalized and bounded within [ -1, 1] |
-| time.BodyGyroJerk.mean.Z | Time domain signal, Body gyro jerk, Z direction, mean value | normalized and bounded within [ -1, 1] |
-| time.BodyGyroJerk.std.X | Time domain signal, Body gyro jerk, X direction, standard deviation | normalized and bounded within [ -1, 1] |
-| time.BodyGyroJerk.std.Y | Time domain signal, Body gyro jerk, Y direction, standard deviation | normalized and bounded within [ -1, 1] |
-| time.BodyGyroJerk.std.Z | Time domain signal, Body gyro jerk, Z direction, standard deviation | normalized and bounded within [ -1, 1] |
+| time.BodyGyro.mean.X | Time domain signal, Body gyro (angular velocity), X direction, mean value | normalized and bounded within [ -1, 1] |
+| time.BodyGyro.mean.Y | Time domain signal, Body gyro (angular velocity), Y direction, mean value  | normalized and bounded within [ -1, 1] |
+| time.BodyGyro.mean.Z | Time domain signal, Body gyro (angular velocity), Z direction, mean value | normalized and bounded within [ -1, 1] |
+| time.BodyGyro.std.X | Time domain signal, Body gyro (angular velocity), X direction, standard deviation | normalized and bounded within [ -1, 1] |
+| time.BodyGyro.std.Y | Time domain signal, Body gyro (angular velocity), Y direction, standard deviation | normalized and bounded within [ -1, 1] |
+| time.BodyGyro.std.Z | Time domain signal, Body gyro (angular velocity), Z direction, standard deviation | normalized and bounded within [ -1, 1] |
+| time.BodyGyroJerk.mean.X | Time domain signal, Body gyro (angular velocity) jerk, X direction, mean value | normalized and bounded within [ -1, 1] |
+| time.BodyGyroJerk.mean.Y | Time domain signal, Body gyro (angular velocity) jerk, Y direction, mean value  | normalized and bounded within [ -1, 1] |
+| time.BodyGyroJerk.mean.Z | Time domain signal, Body gyro (angular velocity) jerk, Z direction, mean value | normalized and bounded within [ -1, 1] |
+| time.BodyGyroJerk.std.X | Time domain signal, Body gyro (angular velocity) jerk, X direction, standard deviation | normalized and bounded within [ -1, 1] |
+| time.BodyGyroJerk.std.Y | Time domain signal, Body gyro (angular velocity) jerk, Y direction, standard deviation | normalized and bounded within [ -1, 1] |
+| time.BodyGyroJerk.std.Z | Time domain signal, Body gyro (angular velocity) jerk, Z direction, standard deviation | normalized and bounded within [ -1, 1] |
 | time.BodyAccelerationMagnitude.mean | Time domain signal, Body acceleration magnitude, mean value | normalized and bounded within [ -1, 1] |
 | time.BodyAccelerationMagnitude.std | Time domain signal, Body acceleration magnitude, standard deviation | normalized and bounded within [ -1, 1] |
 | time.GravityAccelerationMagnitude.mean | Time domain signal, Gravity acceleration magnitude, mean value | normalized and bounded within [ -1, 1] |
 | time.GravityAccelerationMagnitude.std | Time domain signal, Gravity acceleration magnitude, standard deviation | normalized and bounded within [ -1, 1] |
 | time.BodyAccelerationJerkMagnitude.mean | Time domain signal, Body acceleration jerk magnitude, mean value | normalized and bounded within [ -1, 1] |
 | time.BodyAccelerationJerkMagnitude.std | Time domain signal, Body acceleration jerk magnitude, standard deviation | normalized and bounded within [ -1, 1] |
-| time.BodyGyroMagnitude.mean | Time domain signal, Body gyro magnitude, mean value | normalized and bounded within [ -1, 1] |
-| time.BodyGyroMagnitude.std | Time domain signal, Body gyro magnitude, standard deviation | normalized and bounded within [ -1, 1] |
-| time.BodyGyroJerkMagnitude.mean | Time domain signal, Body gyro jerk magnitude, mean value | normalized and bounded within [ -1, 1] |
-| time.BodyGyroJerkMagnitude.std | Time domain signal, Body gyro jerk magnitude, standard deviation | normalized and bounded within [ -1, 1] |
+| time.BodyGyroMagnitude.mean | Time domain signal, Body gyro (angular velocity) magnitude, mean value | normalized and bounded within [ -1, 1] |
+| time.BodyGyroMagnitude.std | Time domain signal, Body gyro (angular velocity) magnitude, standard deviation | normalized and bounded within [ -1, 1] |
+| time.BodyGyroJerkMagnitude.mean | Time domain signal, Body gyro (angular velocity) jerk magnitude, mean value | normalized and bounded within [ -1, 1] |
+| time.BodyGyroJerkMagnitude.std | Time domain signal, Body gyro (angular velocity) jerk magnitude, standard deviation | normalized and bounded within [ -1, 1] |
 | fastFourier.BodyAcceleration.mean.X | Fast fourier transformed signal, Body acceleration, X direction, mean value | normalized and bounded within [ -1, 1] |
 | fastFourier.BodyAcceleration.mean.Y | Fast fourier transformed signal, Body acceleration, Y direction, mean value  | normalized and bounded within [ -1, 1] |
 | fastFourier.BodyAcceleration.mean.Z | Fast fourier transformed signal, Body acceleration, Z direction, mean value | normalized and bounded within [ -1, 1] |
@@ -149,20 +141,20 @@ Each feature label/name consists of  3 or 4 parts: p1.p2.p3.p4  (p4 is optional)
 | fastFourier.BodyAccelerationJerk.std.X | Fast fourier transformed signal, Body acceleration jerk, X direction, standard deviation | normalized and bounded within [ -1, 1] |
 | fastFourier.BodyAccelerationJerk.std.Y | Fast fourier transformed signal, Body acceleration jerk, Y direction, standard deviation | normalized and bounded within [ -1, 1] |
 | fastFourier.BodyAccelerationJerk.std.Z | Fast fourier transformed signal, Body acceleration jerk, Z direction, standard deviation | normalized and bounded within [ -1, 1] |
-| fastFourier.BodyGyro.mean.X | Fast fourier transformed signal, Body gyro, X direction, mean value | normalized and bounded within [ -1, 1] |
-| fastFourier.BodyGyro.mean.Y | Fast fourier transformed signal, Body gyro, Y direction, mean value  | normalized and bounded within [ -1, 1] |
-| fastFourier.BodyGyro.mean.Z | Fast fourier transformed signal, Body gyro, Z direction, mean value | normalized and bounded within [ -1, 1] |
-| fastFourier.BodyGyro.std.X | Fast fourier transformed signal, Body gyro, X direction, standard deviation | normalized and bounded within [ -1, 1] |
-| fastFourier.BodyGyro.std.Y | Fast fourier transformed signal, Body gyro, Y direction, standard deviation | normalized and bounded within [ -1, 1] |
-| fastFourier.BodyGyro.std.Z | Fast fourier transformed signal, Body gyro, Z direction, standard deviation | normalized and bounded within [ -1, 1] |
+| fastFourier.BodyGyro.mean.X | Fast fourier transformed signal, Body gyro (angular velocity), X direction, mean value | normalized and bounded within [ -1, 1] |
+| fastFourier.BodyGyro.mean.Y | Fast fourier transformed signal, Body gyro (angular velocity), Y direction, mean value  | normalized and bounded within [ -1, 1] |
+| fastFourier.BodyGyro.mean.Z | Fast fourier transformed signal, Body gyro (angular velocity), Z direction, mean value | normalized and bounded within [ -1, 1] |
+| fastFourier.BodyGyro.std.X | Fast fourier transformed signal, Body gyro (angular velocity), X direction, standard deviation | normalized and bounded within [ -1, 1] |
+| fastFourier.BodyGyro.std.Y | Fast fourier transformed signal, Body gyro (angular velocity), Y direction, standard deviation | normalized and bounded within [ -1, 1] |
+| fastFourier.BodyGyro.std.Z | Fast fourier transformed signal, Body gyro (angular velocity), Z direction, standard deviation | normalized and bounded within [ -1, 1] |
 | fastFourier.BodyAccelerationMagnitude.mean | Fast fourier transformed signal, Body acceleration magnitude, mean value | normalized and bounded within [ -1, 1] |
 | fastFourier.BodyAccelerationMagnitude.std | Fast fourier transformed signal, Body acceleration magnitude, standard deviation | normalized and bounded within [ -1, 1] |
 | fastFourier.BodyAccelerationJerkMagnitude.mean | Fast fourier transformed signal, Body acceleration jerk magnitude, mean value | normalized and bounded within [ -1, 1] |
 | fastFourier.BodyAccelerationJerkMagnitude.std | Fast fourier transformed signal, Body acceleration jerk magnitude, standard deviation | normalized and bounded within [ -1, 1] |
-| fastFourier.BodyGyroMagnitude.mean | Fast fourier transformed signal, Body gyro magnitude, mean value | normalized and bounded within [ -1, 1] |
-| fastFourier.BodyGyroMagnitude.std | Fast fourier transformed signal, Body gyro magnitude, standard deviation | normalized and bounded within [ -1, 1] |
-| fastFourier.BodyGyroJerkMagnitude.mean | Fast fourier transformed signal, Body gyro jerk magnitude, mean value | normalized and bounded within [ -1, 1] |
-| fastFourier.BodyGyroJerkMagnitude.std | Fast fourier transformed signal, Body gyro jerk magnitude, standard deviation | normalized and bounded within [ -1, 1] |
+| fastFourier.BodyGyroMagnitude.mean | Fast fourier transformed signal, Body gyro (angular velocity) magnitude, mean value | normalized and bounded within [ -1, 1] |
+| fastFourier.BodyGyroMagnitude.std | Fast fourier transformed signal, Body gyro (angular velocity) magnitude, standard deviation | normalized and bounded within [ -1, 1] |
+| fastFourier.BodyGyroJerkMagnitude.mean | Fast fourier transformed signal, Body gyro (angular velocity) jerk magnitude, mean value | normalized and bounded within [ -1, 1] |
+| fastFourier.BodyGyroJerkMagnitude.std | Fast fourier transformed signal, Body gyro (angular velocity) jerk magnitude, standard deviation | normalized and bounded within [ -1, 1] |
  
 
 
