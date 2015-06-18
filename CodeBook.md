@@ -96,7 +96,7 @@ Each feature label/name consists of  3 or 4 parts: p1.p2.p3.p4  (p4 is optional)
  - p4: if applicable, the axis of the measurment X, Y or Z
  
  | Feature label      | Description           | Values  |
-  |: ------------|:------------|:--------|
+  | :------------ | :------------ | :-------- |
   | time.BodyAcceleration.mean.X | Time domain signal, Body acceleration, X direction, mean value | normalized and bounded within [ -1, 1] |
 | time.BodyAcceleration.mean.Y | Time domain signal, Body acceleration, Y direction, mean value  | normalized and bounded within [ -1, 1] |
 | time.BodyAcceleration.mean.Z | Time domain signal, Body acceleration, Z direction, mean value | normalized and bounded within [ -1, 1] |
