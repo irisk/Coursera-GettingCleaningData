@@ -26,28 +26,12 @@ Finally a Fast Fourier Transform (FFT) was applied to some of these signals prod
 These signals were used to estimate variables of the feature vector for each pattern:  
 '-XYZ' is used to denote 3-axial signals in the X, Y and Z directions.
 
-tBodyAcc-XYZ
-tGravityAcc-XYZ
-tBodyAccJerk-XYZ
-tBodyGyro-XYZ
-tBodyGyroJerk-XYZ
-tBodyAccMag
-tGravityAccMag
-tBodyAccJerkMag
-tBodyGyroMag
-tBodyGyroJerkMag
-fBodyAcc-XYZ
-fBodyAccJerk-XYZ
-fBodyGyro-XYZ
-fBodyAccMag
-fBodyAccJerkMag
-fBodyGyroMag
-fBodyGyroJerkMag
-
 The set of variables that were estimated from these signals, and that we used for this analysis, are: 
 
-mean(): Mean value
-std(): Standard deviation
+ - mean(): Mean value
+ - std(): Standard deviation
+ 
+ See below for a complete overview of features that were included in this analysis
 
  
 ##Creating the tidy datafile
@@ -84,7 +68,7 @@ The original data set contained 10299 observations for each feature. The tidy da
 Each feature label/name consists of  3 or 4 parts: p1.p2.p3.p4  (p4 is optional)
  - p1: time signal or fast fourier transformed signal
  - p2: signal type
- - p3: mean or std 
+ - p3: mean or std
  - p4: if applicable, the axis of the measurement X, Y or Z
  
  | Feature label      | Description           | Values  |
