@@ -98,12 +98,14 @@ fullData[ ,2] <- factor(fullData[ ,2], labels = actLabels)
 #Change the column names of the full data set, to be more descriptive
 labels <- colnames(fullData)
 #Expand some of the abbreviations used
-labels  <- gsub("^t", "time-", labels)
-labels  <- gsub("^f", "fastFourier-", labels)
+labels  <- gsub("^t", "time.", labels)
+labels  <- gsub("^f", "fastFourier.", labels)
 labels  <- gsub("Acc", "Acceleration", labels)
 labels  <- gsub("Mag", "Magnitude", labels)
 #remove the error of the double mention of body
 labels  <- gsub("BodyBody", "Body", labels)
+#remove dashes and replace with dots
+labels  <- gsub("-", ".", labels)
 colnames(fullData) <-labels
 
 
